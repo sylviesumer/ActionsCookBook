@@ -1,0 +1,19 @@
+# workflow to show how to develop in workflow branches
+name: Develop in a branch
+
+on: [pull_request, workflow_dispatch]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - run: echo "PR title is '${{github.event.pull_request.title}}'."
+      - run:  |
+          echo "::debug::This is a debug message."
+          echo "::notice::This is a notice message."
+          echo "::warning::This is a warning message."
+          echo "::error::this is an error message."
+          
